@@ -1,0 +1,49 @@
+.contact{
+    padding: 4em 0;
+
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+    .inputs{
+        display: flex;
+        flex-direction: column;
+        
+        @include mq($width: 40em){
+            flex-direction: row;
+            label{
+                width: 45%;
+            }  
+        }
+        
+    }
+    input,textarea{
+        border: 1 solid $gray;
+        border-radius: 2px;
+        padding: .25em;
+        margin-bottom: 1em;
+    }
+
+    @include mq($width: 40em){
+        label + label{
+            margin-left: auto;
+        }
+    }
+
+    textarea{
+        width: 100%;
+        resize: none;
+        height: 8em;
+    }
+
+    input{
+        margin-bottom: 1em;
+        width: 100%;
+    }
+
+    @include mq($width: 40em){
+        button{
+            margin-left: auto;
+        }
+    }
+}

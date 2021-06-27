@@ -1,0 +1,129 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 0.5em 1em;
+    position: relative;
+
+    .nav-toggle{
+        position: absolute;
+        right: 1em;
+        z-index: 100;
+        border: 0;
+        background: transparent;
+        padding: .5em;
+        cursor: pointer;
+    
+    }
+
+    .hamburger{
+        display: block;
+        position: relative;
+
+        @include mq{
+            display: none;
+        }
+    }
+    
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after{
+        background: $dark-gray;
+        width: 2em;
+        height: 2px;
+        border-radius: 1em;
+        transition: transform 250ms ease-in-out;
+    }
+    
+    .hamburger::before,
+    .hamburger::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    
+    .hamburger::before{
+        top: .5em;
+    }
+    
+    .hamburger::after{
+        bottom: .5em;
+    }
+
+    .nav{
+        background: $white;
+        position: fixed;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+        transform: translate(100%);
+        transition: transform 250ms cubic-bezier(.5,0,.5,1);
+        .nav__list{            
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            
+            justify-content: space-around;
+            align-items: center;
+
+            a{
+                text-decoration: none;
+                color: $dark-gray;
+                padding: 0.5em 1em;
+                font-size: 2rem;
+
+                @include mq{
+                    font-size: 1rem;
+                }
+
+                &:hover,&:focus{
+                    color: lighten($color: $dark-gray, $amount: 30);
+                    text-decoration: underline;
+                }
+            }
+
+            @include mq{
+                flex-direction: row;
+                position: relative;
+                height: auto;
+                background: transparent;
+            }
+        }
+        @include mq{
+            position: relative;
+            margin-left: auto;
+            height: auto;
+            transform: translate(0%);
+        }
+    }
+
+    
+}
+.nav-open{
+    overflow-y: hidden;
+}
+
+.nav-open .nav{
+    transform: translate(0%);
+}
+
+.nav-open .nav-toggle{
+    position: fixed;
+}
+
+.nav-open .hamburger{
+    transform: rotate(.625turn);
+}
+
+.nav-open .hamburger::after{
+    opacity: 0;
+}
+
+.nav-open .hamburger::before{
+    transform: rotate(90deg) translatex(-6px);
+}

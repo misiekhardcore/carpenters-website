@@ -1,0 +1,26 @@
+.offer{
+    padding: 4em 0;
+    .container{
+        .items{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1em;
+
+            .item{
+                width: 100%;
+                flex-shrink: 0;
+                margin-bottom: 4em;
+                
+
+                @include mq{
+                    width: 47%;
+                    
+                    p{
+                        max-width: 90%;
+                    }
+                }
+            }
+        }
+    }
+}
